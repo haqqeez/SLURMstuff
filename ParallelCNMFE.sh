@@ -61,7 +61,7 @@ do
 		then
 			echo "Analyzing $session"
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderv4Large.sl .
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderX.m .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
 			ID=${ID::6}
 			date=202${session#*202}; date=${date::10}
@@ -114,7 +114,7 @@ do
 		then
 			echo "Analyzing $session"
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvertLarge.sl .
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderX.m .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
 			ID=${ID::6}
 			date=202${session#*202}; date=${date::10}
