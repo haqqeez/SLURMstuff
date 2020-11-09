@@ -12,6 +12,8 @@ cvx_setup
 
 cd(oldcd)
 
+numcores = feature('numcores')
+
 % Create a "local" cluster object
 local_cluster = parcluster('local')
 
@@ -19,7 +21,6 @@ local_cluster = parcluster('local')
 local_cluster.JobStorageLocation = getenv('SLURM_TMPDIR')
 
 % Start the parallel pool
-parpool(local_cluster);
+parpool(local_cluster,numcores);
 
 msRun2020_newSoft(analysis_path)
-
