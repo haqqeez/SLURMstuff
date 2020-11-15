@@ -113,17 +113,28 @@ do
 		elif (( $numVideos >= 65 )) && (( $numVideos <= 99 )) && [ -f "timeStamps.csv" ]
 		then
 			echo "Analyzing $session"
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvertLarge.sl .
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
 			ID=${ID::6}
 			date=202${session#*202}; date=${date::10}
 			ID="$ID-$date"
-			sleep 2
-			sed -i -e "s/TASKNAME/$ID/g" msRunSingleFolderConvertLarge.sl
-			sed -i -e "s/MYEMAIL/$email/g" msRunSingleFolderConvertLarge.sl
-			sbatch msRunSingleFolderConvertLarge.sl
-			sleep 2
+			if [[ "$session" == *"ZHA008"* ]] #replace with any animal that takes longer than 3 hours to analyze
+			then
+				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvertZHA008.sl .
+				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
+				sleep 2
+				sed -i -e "s/TASKNAME/$ID/g" msRunSingleFolderConvertZHA008.sl
+				sed -i -e "s/MYEMAIL/$email/g" msRunSingleFolderConvertZHA008.sl
+				sbatch msRunSingleFolderConvertZHA008.sl
+				sleep 2
+			else
+				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvertLarge.sl .
+				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m . 
+				sleep 2
+				sed -i -e "s/TASKNAME/$ID/g" msRunSingleFolderConvertLarge.sl
+				sed -i -e "s/MYEMAIL/$email/g" msRunSingleFolderConvertLarge.sl
+				sbatch msRunSingleFolderConvertLarge.sl
+				sleep 2
+			fi
 		else
 			echo "ERROR $session not compatible for analysis"
 		fi
