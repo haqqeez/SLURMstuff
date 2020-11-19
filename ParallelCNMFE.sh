@@ -14,6 +14,11 @@ email="computezee@gmail.com"
 
 pwd=$(pwd)
 
+### Enter the names of animals with especially long analysis times (e.g., long deconvolutions) that could take up to 4 hours, with recordings >= 60 videos ###
+
+large1="ZHA008"
+large2="ZHA001"
+
 ########################################################################################
 
 data=$(find $pwd -type d -name "Miniscope" -o -name "Miniscope_2")
@@ -96,7 +101,7 @@ do
 			sed -i -e "s/MYEMAIL/$email/g" msRunSingleFolderConvertSmall.sl
 			sbatch msRunSingleFolderConvertSmall.sl
 			sleep 2
-		elif (( $numVideos >= 20 )) && (( $numVideos <= 64 )) && [ -f "timeStamps.csv" ]
+		elif (( $numVideos >= 20 )) && (( $numVideos <= 59 )) && [ -f "timeStamps.csv" ]
 		then
 			echo "Analyzing $session"
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvert.sl .
@@ -110,21 +115,21 @@ do
 			sed -i -e "s/MYEMAIL/$email/g" msRunSingleFolderConvert.sl
 			sbatch msRunSingleFolderConvert.sl
 			sleep 2
-		elif (( $numVideos >= 65 )) && (( $numVideos <= 99 )) && [ -f "timeStamps.csv" ]
+		elif (( $numVideos >= 60 )) && (( $numVideos <= 99 )) && [ -f "timeStamps.csv" ]
 		then
 			echo "Analyzing $session"
 			ID=$initials${session#*$initials}
 			ID=${ID::6}
 			date=202${session#*202}; date=${date::10}
 			ID="$ID-$date"
-			if [[ "$session" == *"ZHA008"* ]] #replace with any animal that takes longer than 3 hours to analyze
+			if [[ "$session" == *"$large1"* ]] || [[ "$session" == *"$large2"* ]] #replace with any animal that takes longer than 3 hours to analyze
 			then
-				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvertZHA008.sl .
+				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvertXtra.sl .
 				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
 				sleep 2
-				sed -i -e "s/TASKNAME/$ID/g" msRunSingleFolderConvertZHA008.sl
-				sed -i -e "s/MYEMAIL/$email/g" msRunSingleFolderConvertZHA008.sl
-				sbatch msRunSingleFolderConvertZHA008.sl
+				sed -i -e "s/TASKNAME/$ID/g" msRunSingleFolderConvertXtra.sl
+				sed -i -e "s/MYEMAIL/$email/g" msRunSingleFolderConvertXtra.sl
+				sbatch msRunSingleFolderConvertXtra.sl
 				sleep 2
 			else
 				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvertLarge.sl .
