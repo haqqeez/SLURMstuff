@@ -16,8 +16,8 @@ pwd=$(pwd)
 
 ### Enter the names of animals with especially long analysis times (e.g., long deconvolutions) that could take up to 4 hours, with recordings >= 60 videos ###
 
-large1="ZHA008"
-large2="ZHA001"
+large1="ZHA001"
+large2="ZHA008"
 
 ########################################################################################
 
@@ -37,8 +37,8 @@ do
 		elif (( $numVideos > 0 )) && (( $numVideos < 21 )) && [ -f "timeStamps.csv" ]
 		then
 			echo "Analyzing $session"
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderv4Small.sl .
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderv4Small.sl .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
 			ID=${ID::6}
 			date=202${session#*202}; date=${date::10}
@@ -51,8 +51,8 @@ do
 		elif (( $numVideos >= 21 )) && (( $numVideos <= 64 )) && [ -f "timeStamps.csv" ]
 		then
 			echo "Analyzing $session"
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderv4.sl .
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderv4.sl .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
 			ID=${ID::6}
 			date=202${session#*202}; date=${date::10}
@@ -65,8 +65,8 @@ do
                 elif (( $numVideos >= 65 )) && (( $numVideos <= 99 )) && [ -f "timeStamps.csv" ]
 		then
 			echo "Analyzing $session"
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderv4Large.sl .
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderv4Large.sl .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
 			ID=${ID::6}
 			date=202${session#*202}; date=${date::10}
@@ -90,8 +90,8 @@ do
 		elif (( $numVideos > 0 )) && (( $numVideos < 20 )) && [ -f "timeStamps.csv" ]
 		then
 			echo "Analyzing $session"
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvertSmall.sl .
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderConvertSmall.sl .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
 			ID=${ID::6}
 			date=202${session#*202}; date=${date::10}
@@ -104,8 +104,8 @@ do
 		elif (( $numVideos >= 20 )) && (( $numVideos <= 59 )) && [ -f "timeStamps.csv" ]
 		then
 			echo "Analyzing $session"
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvert.sl .
-			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderConvert.sl .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
 			ID=${ID::6}
 			date=202${session#*202}; date=${date::10}
@@ -124,16 +124,16 @@ do
 			ID="$ID-$date"
 			if [[ "$session" == *"$large1"* ]] || [[ "$session" == *"$large2"* ]] #replace with any animal that takes longer than 3 hours to analyze
 			then
-				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvertXtra.sl .
-				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m .
+				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderConvertXtra.sl .
+				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 				sleep 2
 				sed -i -e "s/TASKNAME/$ID/g" msRunSingleFolderConvertXtra.sl
 				sed -i -e "s/MYEMAIL/$email/g" msRunSingleFolderConvertXtra.sl
 				sbatch msRunSingleFolderConvertXtra.sl
 				sleep 2
 			else
-				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolderConvertLarge.sl .
-				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/SLURMstuff/msRunSingleFolder.m . 
+				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderConvertLarge.sl .
+				cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m . 
 				sleep 2
 				sed -i -e "s/TASKNAME/$ID/g" msRunSingleFolderConvertLarge.sl
 				sed -i -e "s/MYEMAIL/$email/g" msRunSingleFolderConvertLarge.sl
