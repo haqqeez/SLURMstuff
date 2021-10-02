@@ -3,18 +3,24 @@
 ########################################################################################
 
 ### Enter your 3-letter initials below; this is used to name jobs based on Animal ID
+### For example, the animal "ZHA001" has initials "ZHA" and IDlength=6 characters
+### For example, the animal "A12" has initials "A" and IDlength=3
+### If your animals don't have a consistent naming scheme (e.g., just random numbers like 124 or 2592) then your jobs will still run but the
+### email you get naming your job will just look a bit odd. This step is simply to make jobs readable when submitting.
 
 initials="ZHA"
+IDlength=6
 
 ### Enter your e-mail below
 
-email="computezee@gmail.com"
+email="insertemailhere@email.com"
 
 ### Enter the full parent directory for analysis in the () brackets (default is pwd)
 
 pwd=$(pwd)
 
 ### Enter the names of animals with especially long analysis times (e.g., long deconvolutions) that could take up to 4 hours, with recordings >= 60 videos ###
+### You typically find these by trial and error; if one animal is consistently giving OUT OF MEMORY errors when you run CNMFE, put their name below before running this
 
 large1="ZHA029"
 large2="ZHA032"
@@ -40,7 +46,7 @@ do
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderv4Small.sl .
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
-			ID=${ID::6}
+			ID=${ID::$IDlength}
 			date=202${session#*202}; date=${date::10}
 			ID="$ID-$date" 
 			sleep 2
@@ -54,7 +60,7 @@ do
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderv4.sl .
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
-			ID=${ID::6}
+			ID=${ID::$IDlength}
 			date=202${session#*202}; date=${date::10}
 			ID="$ID-$date"
 			sleep 2
@@ -68,7 +74,7 @@ do
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderv4Large.sl .
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
-			ID=${ID::6}
+			ID=${ID::$IDlength}
 			date=202${session#*202}; date=${date::10}
 			ID="$ID-$date"
 			sleep 2
@@ -93,7 +99,7 @@ do
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderConvertSmall.sl .
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
-			ID=${ID::6}
+			ID=${ID::$IDlength}
 			date=202${session#*202}; date=${date::10}
 			ID="$ID-$date"
 			sleep 2
@@ -107,7 +113,7 @@ do
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolderConvert.sl .
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/msRunSingleFolder.m .
 			ID=$initials${session#*$initials}
-			ID=${ID::6}
+			ID=${ID::$IDlength}
 			date=202${session#*202}; date=${date::10}
 			ID="$ID-$date"
 			sleep 2
@@ -119,7 +125,7 @@ do
 		then
 			echo "Analyzing $session"
 			ID=$initials${session#*$initials}
-			ID=${ID::6}
+			ID=${ID::$IDlength}
 			date=202${session#*202}; date=${date::10}
 			ID="$ID-$date"
 			if [[ "$session" == *"$large1"* ]] || [[ "$session" == *"$large2"* ]] #replace with any animal that takes longer than 3 hours to analyze
