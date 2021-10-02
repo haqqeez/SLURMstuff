@@ -11,3 +11,7 @@ path_config = my_videos_directory + '/' + 'config.yaml'
 print('----------------------ANALYZING NOW----------------------')
 
 deeplabcut.analyze_videos(path_config, [my_videos_directory], save_as_csv=True)
+
+#print('-------FILTERING------')
+
+deeplabcut.filterpredictions(path_config, [my_videos_directory], filtertype= 'median', save_as_csv=True)

@@ -16,8 +16,8 @@ pwd=$(pwd)
 
 ### Enter the names of animals with especially long analysis times (e.g., long deconvolutions) that could take up to 4 hours, with recordings >= 60 videos ###
 
-large1="ZHA001"
-large2="ZHA008"
+large1="ZHA029"
+large2="ZHA032"
 
 ########################################################################################
 

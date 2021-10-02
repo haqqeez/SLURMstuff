@@ -13,7 +13,7 @@
 module load StdEnv/2018.3
 module load python/3.6
 
-source /lustre03/project/rpp-markpb68/m3group/DLC/DLCenv/bin/activate
+source /lustre03/project/rpp-markpb68/m3group/DLC/DLC_env/bin/activate
 
 export DLClight=True
 

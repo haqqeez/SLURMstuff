@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=TASKNAME
 #SBATCH --account=rpp-markpb68
-#SBATCH --time=3:00:00
+#SBATCH --time=4:50:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=14
-#SBATCH --mem=210000
+#SBATCH --mem=220000
 #SBATCH --mail-user=MYEMAIL
 #SBATCH --mail-type=ALL
 

@@ -13,4 +13,4 @@ module load StdEnv/2020
 module load gentoo/2020 
 module load matlab/2020a
 
-srun matlab - nodisplay - singleCompThread -r "msDeconvolve"
+matlab -nodisplay -batch "msDeconvolve"
