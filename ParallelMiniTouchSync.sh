@@ -40,6 +40,7 @@ do
 			echo "Analyzing $session"
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/minitouchsync_PAL.sl .
 			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/SLURMstuff/minitouchsync_PAL.m .
+			cp /lustre03/project/rpp-markpb68/m3group/Haqqee/GitHub/PhD/minibehavsync.py ../BehavCam_0
 			ID=$initials${session#*$initials}
 			ID=${ID::6}
 			date=202${session#*202}; date=${date::10}

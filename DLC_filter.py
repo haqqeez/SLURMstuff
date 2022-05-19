@@ -12,4 +12,4 @@ print('----------------------ANALYZING NOW----------------------')
 
 #deeplabcut.analyze_videos(path_config, [my_videos_directory], save_as_csv=True)
 
-deeplabcut.filterpredictions(path_config, [my_videos_directory], filtertype= 'median')
+deeplabcut.filterpredictions(path_config, [my_videos_directory], filtertype= 'median', save_as_csv=True)

@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=TASKNAME
 #SBATCH --account=rpp-markpb68
-#SBATCH --time=4:50:00
+#SBATCH --time=5:59:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=14

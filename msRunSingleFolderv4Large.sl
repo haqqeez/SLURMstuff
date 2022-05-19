@@ -5,7 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=14
-#SBATCH --mem=210000
+#SBATCH --mem=220000
 #SBATCH --mail-user=MYEMAIL
 #SBATCH --mail-type=ALL
 
