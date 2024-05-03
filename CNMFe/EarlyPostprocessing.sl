@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=EarlyProcessing
-#SBATCH --account=rpp-markpb68
+#SBATCH --account=rrg-markpb68
 #SBATCH --time=0:50:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1

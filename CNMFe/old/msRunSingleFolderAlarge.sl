@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=TASKNAME
-#SBATCH --account=rpp-markpb68
-#SBATCH --time=3:30:00
+#SBATCH --job-name=msRuntestNewsoft
+#SBATCH --account=rrg-markpb68
+#SBATCH --time=3:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=14
-#SBATCH --mem=190000
-#SBATCH --mail-user=MYEMAIL
+#SBATCH --cpus-per-task=10
+#SBATCH --mem=150000
+#SBATCH --mail-user=computezee@gmail.com
 #SBATCH --mail-type=ALL
 
 for i in *.avi;                                                                                                                                                                                                                                
@@ -32,4 +32,4 @@ module load StdEnv/2020
 module load gentoo/2020
 module load matlab/2020a
 
-matlab -nodisplay -batch "msRunSingleFolder"
+srun matlab -nodisplay -batch "msRunSingleFolder"
