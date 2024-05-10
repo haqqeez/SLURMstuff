@@ -52,7 +52,7 @@ email="computezee@gmail.com" # email to send notifications to
 mailtype="END,FAIL" # type of email notifications you want; END, FAIL, ALL, BEGIN, etc.
 output_directory="/home/haqqeez/SLURMS/CNMFe/" # directory where you want the output and errors of slurm files to be saved
 output_subs=1
-# note that for multidparamloop we will create subdirectories based on animal ID
+# this will create subdirectories based on animal ID for saving slurm output files (instead of all in the same directory, which can get cluttered) 
 # if you instead want to save all the outputs in the same directory, set output_subs=0
 
 # output directory will be created if it doesn't exist
